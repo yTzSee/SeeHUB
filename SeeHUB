@@ -1,4 +1,6 @@
-local function createAntiVoidPart()
+    -- ytzxdev was here :D
+    
+    local function createAntiVoidPart()
     local part = Instance.new("Part")
     part.Size = Vector3.new(100000, 3, 100000)
     part.Position = Vector3.new(0, -10, 0)
@@ -8,21 +10,13 @@ local function createAntiVoidPart()
     part.Parent = game.Workspace
 end
 
-local function createRedPart()
+local function SafeArea()
     local part = Instance.new("Part")
-    part.Size = Vector3.new(5, 5, 5)
-    part.Position = Vector3.new(0, 5, 0)
-    part.BrickColor = BrickColor.new("Bright red")
-    part.Anchored = true
-
-    part.Parent = game.Workspace
-end
-
-local function createWhitePart()
-    local part = Instance.new("Part")
-    part.Size = Vector3.new(5, 5, 5)
-    part.Position = Vector3.new(0, 5, 0)
-    part.BrickColor = BrickColor.new("White")
+    part.Size = Vector3.new(35, 10, 35)
+    part.Position = Vector3.new(-1500, 100, -1500)
+    part.BrickColor = BrickColor.new("Black")
+    part.Name = "SafeArea"
+    part.Material = Enum.Material.SmoothPlastic
     part.Anchored = true
     part.Parent = game.Workspace
 end
@@ -37,87 +31,92 @@ local function createAntiDeadBlockPart()
     part.Parent = game.Workspace
 end
 
-
-local function createYellowPart()
-    local part = Instance.new("Part")
-    part.Size = Vector3.new(5, 5, 5)
-    part.Position = Vector3.new(0, 15, 2)
-    part.BrickColor = BrickColor.new("Yellow")
-    part.Anchored = true
-    part.Parent = game.Workspace
-end
-
 if game.PlaceId == 6403373529 then
+    SafeArea()
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib("SeeHub", "DarkTheme")
+    local Window = Library.CreateLib("SeeHub", "Ocean")
     local Main = Window:NewTab("Main")
-    local Gloves = Window:NewTab("Gloves")
-    local Credits = Window:NewTab("Credits")
-    local GloveSection = Gloves:NewSection("Gloves")
-    local AntiSection = Main:NewSection("Anti")
+    local Badges = Window:NewTab("Badges")
     local MainSection = Main:NewSection("Main")
+    local AntiSection = Main:NewSection("Anti")
+    local BadgesSection = Badges:NewSection("Badges")
+    local Credits = Window:NewTab("Credits")
     local CreditsSection = Credits:NewSection("Credits")
+ 
 
-    CreditsSection:NewButton("ytzsee :D", "DM ytzsee on discord", function()
-        warn("ytzsee?") -- Call the function when the button is clicked
-    end)
-     
-    CreditsSection:NewButton("Just", "DM justpicycho on discord", function()
-        warn("justpicycho?") -- Call the function when the button is clicked
-    end)
-    
-    GloveSection:NewButton("BRICK Farm", "Go To Safe Area", function()
-        createRedPart() -- Call the function when the button is clicked
+
+
+
+    -- Sessão Principal
+
+     MainSection:NewButton("SB Testing Server", "...", function()
+       game:GetService("TeleportService"):Teleport(9020359053)
     end)
 
     MainSection:NewButton("Infinite Yield FE", "...", function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Infinite%20Yield%20but%20with%20secure%20dex'))()
     end)
 
-    GloveSection:NewButton("SLEEPING Farm", "Go To Safe Area", function()
-        createWhitePart() -- Call the function when the button is clicked
+
+
+
+
+    -- Sessão de Badges
+
+    BadgesSection:NewButton("Retro Badge ( Use When In Dimension )", "...", function()
+    local targetPosition = Vector3.new(-27776.1, 169.135, 4834.86)
+    local targetCFrame = CFrame.new(targetPosition)
+
+    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(targetCFrame)
+    end)
+       
+        BadgesSection:NewButton("Psycho ( Use When In Dimension )", "...", function()
+    local targetPosition = Vector3.new(17880, 2977.61, -242.609)
+    local targetCFrame = CFrame.new(targetPosition)
+
+    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(targetCFrame)
+    wait(10)
+    local targetPosition = Vector3.new(17347.6, 2977.61, 103.471)
+    local targetCFrame = CFrame.new(targetPosition)
+
+    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(targetCFrame)
+    wait(15)
+    local targetPosition = Vector3.new(18768.7, 2992.35, -226.558)
+    local targetCFrame = CFrame.new(targetPosition)
+
+    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(targetCFrame)
+    end)
+    
+    BadgesSection:NewButton("Safe Area ( Farm Here )", "...", function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.SafeArea.CFrame * CFrame.new(0,20,0)
     end)
 
-     GloveSection:NewButton("VOODO Farm", "Go To Safe Area", function()
-        createYellowPart() -- Call the function when the button is clicked
+
+
+
+
+    -- Sessão de Anti
+
+    AntiSection:NewButton("Anti-Void", "...", function()
+        createAntiVoidPart()
     end)
 
-    AntiSection:NewButton("Anti-Void", "Defense", function()
-        createAntiVoidPart() -- Call the function when the button is clicked
+    AntiSection:NewButton("Anti Dead Block", "...", function()
+        createAntiDeadBlockPart()
     end)
 
-    AntiSection:NewButton("Anti Dead Block", "Defense", function()
-        createAntiDeadBlockPart() -- Call the function when the button is clicked
-    end)
 
+
+
+
+    -- Sessão de Creditos
+
+    CreditsSection:NewButton("ytzsee :D", "DM ytzsee on discord", function()
+        warn("ytzsee?")
+    end)
+     
+    CreditsSection:NewButton("Just", "DM justpicycho on discord", function()
+        warn("justpicycho?")
+    end)
+    
 end
-
-game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.E then
-        createRedPart() -- Call the function when the E key is pressed
-    end
-end)
-
-game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.Q then
-        createWhitePart() -- Call the function when the E key is pressed
-    end
-end)
-
-game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.R then
-        createYellowPart() -- Call the function when the E key is pressed
-    end
-end)
-
-game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.F then
-        createAntiVoidPart() -- Call the function when the E key is pressed
-    end
-end)
-
-game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.H then
-        createAntiDeadBlockPart() -- Call the function when the E key is pressed
-    end
-end)
