@@ -10,7 +10,7 @@
     part.Parent = game.Workspace
 end
 
-local function SafeArea()
+    local function SafeArea()
     local part = Instance.new("Part")
     part.Size = Vector3.new(35, 10, 35)
     part.Position = Vector3.new(-1500, 100, -1500)
