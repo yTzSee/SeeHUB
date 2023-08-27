@@ -10,7 +10,7 @@
     part.Parent = game.Workspace
 end
 
-    local function SafeArea()
+local function SafeArea()
     local part = Instance.new("Part")
     part.Size = Vector3.new(35, 10, 35)
     part.Position = Vector3.new(-1500, 100, -1500)
@@ -42,6 +42,7 @@ if game.PlaceId == 6403373529 then
     local BadgesSection = Badges:NewSection("Badges")
     local Credits = Window:NewTab("Credits")
     local CreditsSection = Credits:NewSection("Credits")
+	local AbilitySection = Main:NewSection("Ability")
  
 
 
@@ -55,6 +56,18 @@ if game.PlaceId == 6403373529 then
 
     MainSection:NewButton("Infinite Yield FE", "...", function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Infinite%20Yield%20but%20with%20secure%20dex'))()
+    end)
+
+	AbilitySection:NewButton("Spawn Nimbus ( MOD )", "...", function()
+        game.ReplicatedStorage.NimbusAbility:FireServer()
+    end)
+
+	AbilitySection:NewButton("Spawn Cloud", "...", function()
+        game.ReplicatedStorage.CloudAbility:FireServer()
+    end)
+
+	AbilitySection:NewButton("Spawn Cloud", "...", function()
+        game.ReplicatedStorage.CloudAbility:FireServer()
     end)
 
 
